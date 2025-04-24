@@ -1,0 +1,40 @@
+{% extends "base/base.html" %}
+
+{% block title %}
+Головна Сторінка
+{% endblock %}
+
+{% block import %}
+{% endblock %}
+
+{% block content %}
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="OrderCreateModal">
+    Замовити Курс
+</button>
+
+
+<div class="modal fade" id="OrderCreateModal" tabindex="-1" aria-labelledby="OrderCreateModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="OrderCreateModalLabel">Замовити</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+
+      <div class="modal-body">
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Надіслати</button>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+{% endblock %}
+
+{% block js %}
+<script src="static/js/order.js"></script>
+{% endblock %}
