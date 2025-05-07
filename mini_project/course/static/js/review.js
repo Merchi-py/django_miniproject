@@ -1,4 +1,4 @@
-$('#orderCreate').submit(function (event){
+$('#reviewCreationForm').submit(function (event){
     event.preventDefault();
     let form = $(this);
     let data = {};
@@ -11,7 +11,8 @@ $('#orderCreate').submit(function (event){
         'dataType': 'json',
         'data': data,
         'success': function (response){
-            $('#OrderCreateModal').modal('hide');
+            $("#ReviewTextField").val("");
+            $('#reviewModal').modal('hide');
         },
     });
 });

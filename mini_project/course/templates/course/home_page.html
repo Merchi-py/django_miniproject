@@ -1,40 +1,63 @@
 {% extends "base/base.html" %}
 
+{% load static %}
+
 {% block title %}
 Головна Сторінка
 {% endblock %}
 
 {% block import %}
+<link rel="stylesheet" href="/static/css/base.css">
+<link rel="stylesheet" href="/static/css/main.css">
 {% endblock %}
 
 {% block content %}
-<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="OrderCreateModal">
-    Замовити Курс
-</button>
+<div class="container_fluid" >
+    <div class="row" style="height:100vh">
+        <div>
+            <div>
+                <h1>Знайди свого власного вчителя<br> всього за пару кліків!</h1>
+                <p class="font-size-button">Всього за 200грн в місяць<br> ви отримуєте чудовий онлайн-урок з іншими<br> учнями та гарним вчителем</p>
+                <h3 class="Warning-text">Перший урок безкоштовно!</h3>
+            </div>
+            <div class="image-settings">
+                <img class="image-settings" src="https://cambridge.ua/app/themes/sage/dist/images/newImages/pages/main/Head-image_uk.png"></img>
+            </div>
+        </div>
+    </div>
+    <div class="row" style="height:5vh">
+        <div>
+            <button type="button" class="custom-button" style="width: 1400px; margin: auto; display: block;" data-bs-toggle="modal" data-bs-target="#reviewModal"><b>Відгуки</b></button>
+        </div>
+    </div>
+</div>
 
 
-<div class="modal fade" id="OrderCreateModal" tabindex="-1" aria-labelledby="OrderCreateModalLabel" aria-hidden="true">
+<div class="modal fade" id="reviewModal" tabindex="-1" aria-labelledby="reviewModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
 
       <div class="modal-header">
-        <h1 class="modal-title fs-5" id="OrderCreateModalLabel">Замовити</h1>
+        <h1 class="modal-title fs-5" id="reviewModalLabel">Відгуки</h1>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
 
       <div class="modal-body">
-      </div>
-
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Надіслати</button>
+          {% for r in reviews %}
+            {{ r.review }}<hr><br>
+          {% endfor %}
+        <form action="{% url 'review_create' %}" method="post" id="reviewCreationForm">
+            {% csrf_token %}
+            {{ form_review }}
+            <input class="btn btn-light header_buttons" style="margin-left: 350px;" type="submit" value="Надіслати">
+        </form>
       </div>
 
     </div>
   </div>
 </div>
-
 {% endblock %}
 
 {% block js %}
-<script src="static/js/order.js"></script>
+<script src="{% static 'js/review.js' %}"></script>
 {% endblock %}
