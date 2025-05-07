@@ -16,5 +16,11 @@
 .image-settings {
     width: 500px;
     height: 300px;
-    margin-left: 300px;
+    margin-left: 920px;
+    margin-bottom: 200px;
+}
+
+.margin-text {
+    margin-top: 200px;
+    margin-left: 30px;
 }
