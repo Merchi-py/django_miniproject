@@ -16,3 +16,4 @@ $('#reviewCreationForm').submit(function (event){
         },
     });
 });
+
